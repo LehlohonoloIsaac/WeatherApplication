@@ -19,7 +19,7 @@ class WeatherVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print(CURRENT_WEATHER_URL)
     }
 }
 
