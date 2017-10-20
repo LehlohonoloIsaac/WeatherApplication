@@ -17,9 +17,13 @@ class WeatherVC: UIViewController {
     @IBOutlet weak var currentWeatherTypeLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
+    var currentWeatherDetails = CurrentWeather()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(CURRENT_WEATHER_URL)
+        currentWeatherDetails.downloadWeatherDetails {
+            
+        }
     }
 }
 
