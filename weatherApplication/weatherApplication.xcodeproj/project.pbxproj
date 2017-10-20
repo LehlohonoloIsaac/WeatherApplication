@@ -16,6 +16,7 @@
 		EDC0870B1F99D8FC0030D407 /* weatherApplicationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC0870A1F99D8FC0030D407 /* weatherApplicationTests.swift */; };
 		EDC087161F99D8FC0030D407 /* weatherApplicationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC087151F99D8FC0030D407 /* weatherApplicationUITests.swift */; };
 		EDC087241F9A024F0030D407 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC087231F9A024F0030D407 /* Constants.swift */; };
+		EDC087261F9A05E40030D407 /* CurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC087251F9A05E40030D407 /* CurrentWeather.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		EDC087151F99D8FC0030D407 /* weatherApplicationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = weatherApplicationUITests.swift; sourceTree = "<group>"; };
 		EDC087171F99D8FC0030D407 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EDC087231F9A024F0030D407 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		EDC087251F9A05E40030D407 /* CurrentWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeather.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 				EDC086FE1F99D8FC0030D407 /* LaunchScreen.storyboard */,
 				EDC087011F99D8FC0030D407 /* Info.plist */,
 				EDC087231F9A024F0030D407 /* Constants.swift */,
+				EDC087251F9A05E40030D407 /* CurrentWeather.swift */,
 			);
 			path = weatherApplication;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 			files = (
 				EDC086F81F99D8FC0030D407 /* WeatherVC.swift in Sources */,
 				EDC086F61F99D8FC0030D407 /* AppDelegate.swift in Sources */,
+				EDC087261F9A05E40030D407 /* CurrentWeather.swift in Sources */,
 				EDC087241F9A024F0030D407 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
