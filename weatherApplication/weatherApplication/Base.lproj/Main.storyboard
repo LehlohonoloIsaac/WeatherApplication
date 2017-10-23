@@ -53,7 +53,7 @@
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OpY-ei-n5m">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OpY-ei-n5m">
                                         <rect key="frame" x="235" y="90" width="120" height="120"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="120" id="Fwl-rL-UUt"/>
@@ -71,7 +71,7 @@
                                 <constraints>
                                     <constraint firstItem="OpY-ei-n5m" firstAttribute="leading" secondItem="IFW-5I-K3Z" secondAttribute="trailing" constant="20" id="4HM-U2-d2u"/>
                                     <constraint firstItem="22k-wV-QeX" firstAttribute="centerX" secondItem="OpY-ei-n5m" secondAttribute="centerX" id="64W-Xd-P4t"/>
-                                    <constraint firstAttribute="height" constant="300" id="KJ2-3k-zv6"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="300" id="KJ2-3k-zv6"/>
                                     <constraint firstAttribute="trailing" secondItem="OpY-ei-n5m" secondAttribute="trailing" constant="20" id="Z1U-F8-rg7"/>
                                     <constraint firstItem="22k-wV-QeX" firstAttribute="centerY" secondItem="FUr-A2-tNS" secondAttribute="centerY" id="k0R-pv-QFe"/>
                                     <constraint firstAttribute="bottom" secondItem="IFW-5I-K3Z" secondAttribute="bottom" constant="20" id="kWw-Ej-2Hb"/>
