@@ -84,7 +84,7 @@
                                 <rect key="frame" x="0.0" y="300" width="375" height="367"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="weatherCell" rowHeight="89" id="7bn-wQ-pWX">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="weatherCell" rowHeight="89" id="7bn-wQ-pWX" customClass="WeatherCell" customModule="weatherApplication" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="89"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7bn-wQ-pWX" id="zfa-da-GpA">
@@ -151,6 +151,13 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <connections>
+                                            <outlet property="dayLabel" destination="Cpb-2z-tha" id="CCg-i5-2Jt"/>
+                                            <outlet property="highTemperatureLabel" destination="CFL-Yw-SLp" id="VZ8-6s-37X"/>
+                                            <outlet property="lowTemperatureLabel" destination="R47-Ru-dRh" id="vAi-F8-qBP"/>
+                                            <outlet property="weatherIcon" destination="9CA-Lr-ugj" id="NkU-ve-zb2"/>
+                                            <outlet property="weatherTypeLabel" destination="TyW-f8-wIR" id="w27-dd-VT7"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

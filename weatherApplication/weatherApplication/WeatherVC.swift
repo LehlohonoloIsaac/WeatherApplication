@@ -38,6 +38,7 @@ class WeatherVC: UIViewController {
         currentWeatherTypeLabel.text = currentWeather.weatherType
         locationLabel.text = currentWeather.cityName
         currentWeatherImage.image = UIImage(named: currentWeather.weatherType)
+        tableView.reloadData()
     }
     
     func downloadForecastData(completion: @escaping DownloadComplete ){
@@ -59,8 +60,12 @@ class WeatherVC: UIViewController {
 
 extension WeatherVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       let cell = tableView.dequeueReusableCell(withIdentifier: "weatherCell", for: indexPath) 
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "weatherCell", for: indexPath) as? WeatherCell {
+            let forecast = forecasts[indexPath.row]
+            cell.configure(with: forecast)
             return cell
+        }
+        return WeatherCell()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -68,6 +73,6 @@ extension WeatherVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return forecasts.count
     }
 }
