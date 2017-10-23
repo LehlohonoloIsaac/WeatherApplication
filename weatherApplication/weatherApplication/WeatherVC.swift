@@ -25,11 +25,10 @@ class WeatherVC: UIViewController {
         super.viewDidLoad()
 
         currentWeather.downloadWeatherDetails {
-            self.updateMainUI()
-        }
-        
-        downloadForecastData {
-            print("Done downoading data...")
+            self.downloadForecastData {
+                self.updateMainUI()
+                print("Done downloading data from Open Weather Api......")
+            }
         }
     }
     
