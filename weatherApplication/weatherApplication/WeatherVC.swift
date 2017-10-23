@@ -51,6 +51,7 @@ class WeatherVC: UIViewController {
                         let forecast = Forecast(weatherDict: item)
                         self.forecasts.append(forecast)
                     }
+                    self.forecasts.removeFirst()
                 }
             }
             completion()
