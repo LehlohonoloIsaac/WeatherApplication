@@ -1,5 +1,5 @@
 //
-//  Forecast.swift
+//  WeatherForecast.swift
 //  weatherApplication
 //
 //  Created by dvt on 2017/10/23.
@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class Forecast{
+class WeatherForecast{
     
     private var _date: String!
     private var _weatherType: String!
@@ -17,59 +17,78 @@ class Forecast{
     private var _lowTemperature: String!
     
     var date: String {
-        if _date == nil {
-            _date = ""
+        get{
+            if _date == nil {
+                _date = ""
+            }
+            return _date
         }
-        return _date
+        set{
+            _date = newValue
+        }
     }
     
     var weatherType: String {
-        if _weatherType == nil {
-            _weatherType = ""
+        get{
+            if _weatherType == nil {
+                _weatherType = ""
+            }
+            return _weatherType
         }
-        return _weatherType
+        set{
+            _weatherType = newValue
+        }
     }
     
     var highTemperature: String {
-        if _highTemperature == nil {
-            _highTemperature = ""
+        get{
+            if _highTemperature == nil {
+                _highTemperature = ""
+            }
+            return _highTemperature
         }
-        return _highTemperature
+        set{
+            _highTemperature = newValue
+        }
     }
     
     var lowTemperature: String {
-        if _lowTemperature == nil {
-            _lowTemperature = ""
+        get{
+            if _lowTemperature == nil {
+                _lowTemperature = ""
+            }
+            return _lowTemperature
         }
-        return _lowTemperature
+        set{
+            _lowTemperature = newValue
+        }
     }
-
-    init(weatherDict: Dictionary<String,Any>) {
-        if let temp = weatherDict["temp"] as? Dictionary<String,Any> {
+    
+    init(with jsonToParse: Dictionary<String,Any>) {
+        if let temp = jsonToParse["temp"] as? Dictionary<String,Any> {
             if let min = temp["min"] as? Double {
                 let kelvinToCelsius = convertKevinToDegrees(value: min)
-                self._lowTemperature = "\(kelvinToCelsius)"
+                self.lowTemperature = "\(kelvinToCelsius)"
             }
             if let max = temp["max"] as? Double {
                 let kelvinToCelsius = convertKevinToDegrees(value: max)
-                self._highTemperature = "\(kelvinToCelsius)"
+                self.highTemperature = "\(kelvinToCelsius)"
             }
         }
         
-        if let weather = weatherDict["weather"] as? [Dictionary<String,Any>] {
+        if let weather = jsonToParse["weather"] as? [Dictionary<String,Any>] {
             if let main = weather[0]["main"] as? String {
-                self._weatherType = main
+                self.weatherType = main
             }
         }
         
-        if let date = weatherDict["dt"] as? Double {
+        if let date = jsonToParse["dt"] as? Double {
             let unixConvertedDate = Date(timeIntervalSince1970: date)
             let dateFormatter = DateFormatter()
             dateFormatter.dateStyle = .full
             dateFormatter.dateFormat = "EEEE"
-            self._date = unixConvertedDate.dayOfTheWeek()
+            self.date = unixConvertedDate.dayOfTheWeek()
         }
-        
     }
     
 }
