@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import CoreLocation
 
 class WeatherVC: UIViewController {
 
@@ -22,10 +23,24 @@ class WeatherVC: UIViewController {
     var weatherViewModel = WeatherViewModel()
     let weatherForecastsViewModel = WeatherForecastsViewModel()
     let weatherRepositoryImplementation = WeatherRepositoryImplementation()
+    var locationManager = CLLocationManager()
+    var currentCoordinate: CLLocationCoordinate2D?
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.configureLocationManager()
         weatherRepositoryImplementation.delegate = self
-        weatherRepositoryImplementation.fetchCurrentWeatherData()
+    }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("Hello world")
+    }
+    func configureLocationManager(){
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startMonitoringSignificantLocationChanges()
     }
     
     func updateMainUI(){
@@ -34,6 +49,17 @@ class WeatherVC: UIViewController {
         currentWeatherTypeLabel.text = weatherViewModel.showDisplayableWeatherType()
         locationLabel.text = weatherViewModel.showDisplayableCityName()
         currentWeatherImage.image = UIImage(named: weatherViewModel.showDisplayableWeatherIcon())
+    }
+    
+    func updateLocation(_ manager: CLLocationManager,
+                        didUpdateLocations locations: [CLLocation],
+                        updateComplete: @escaping(Double?,Double?) -> Void){
+        manager.stopUpdatingLocation()
+        guard let currentLocation = locations.first else {return}
+        currentCoordinate = currentLocation.coordinate
+        Location.sharedInstance.lattitude = currentCoordinate?.latitude
+        Location.sharedInstance.longitude = currentCoordinate?.longitude
+        updateComplete(Location.sharedInstance.lattitude, Location.sharedInstance.longitude)
     }
     
 }
@@ -67,5 +93,13 @@ extension WeatherVC: WeatherDelegate {
     func didFinishDownloadingWeatherForecastData(with weatherForecast: Dictionary<String, Any>?) {
         weatherForecastsViewModel.parseJSON(jsonToParse: weatherForecast!)
         tableView.reloadData()
+    }
+}
+
+extension WeatherVC: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        updateLocation(manager, didUpdateLocations: locations, updateComplete: { (lattitude,longitude) in
+            self.weatherRepositoryImplementation.fetchCurrentWeatherData()
+        })
     }
 }
