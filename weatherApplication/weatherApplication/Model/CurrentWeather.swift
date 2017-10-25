@@ -34,19 +34,9 @@ class CurrentWeather {
             if _date == nil {
                 _date = ""
             }
-            
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateStyle = .long
-            dateFormatter.timeStyle = .none
-            let currentDate = dateFormatter.string(from: Date())
-            self._date = "Today, \(currentDate)"
+            _date = todaysDate
             return _date
         }
-        
-        set{
-            _date = newValue
-        }
-        
     }
     
     
